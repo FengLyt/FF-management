@@ -1,14 +1,13 @@
 <template>
-  <el-container style="height: 100%; border: 1px solid #eee">
-    <el-header><TopHeader/></el-header>
-    <el-container>
-      <el-aside  width="200px"><LeftSide></LeftSide></el-aside>
-      <el-main>
-        <router-view/>
-      </el-main>
+    <el-container style="height: 100%; border: 1px  #eee">
+      <el-header><TopHeader/></el-header>
+      <el-container>
+        <el-aside  width="200px"><LeftSide></LeftSide></el-aside>
+        <el-main style="height: calc(100vh - 70px)">
+          <router-view/>
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>
-
 </template>
 
 <script>

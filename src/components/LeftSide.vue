@@ -2,15 +2,13 @@
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
     <el-menu :default-openeds="['1','2']" router>
       <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>导航一</template>
-          <el-menu-item  index="/main/" >用户信息</el-menu-item>
-          <el-menu-item index="/main/account">账户信息</el-menu-item>
-          <el-menu-item index="/main/AllUser">账户信息2</el-menu-item>
-          <el-menu-item index="1-4-1">选项4</el-menu-item>
+        <template slot="title"><i class="el-icon-message"></i>功能菜单</template>
+        <el-menu-item :key="index" :index="menu.url" v-for="(menu,index) in menuList">{{menu.name}}</el-menu-item>
+
       </el-submenu>
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>功能菜单</template>
-          <el-menu-item index="/main/UserManagement">用户管理</el-menu-item>
+          <el-menu-item index="/main/alluser">用户管理</el-menu-item>
           <el-menu-item index="2-2">角色管理</el-menu-item>
           <el-menu-item index="2-3">楼栋管理</el-menu-item>
           <el-menu-item index="2-4">宿舍管理</el-menu-item>
@@ -33,15 +31,31 @@
     </el-menu>
 
   </el-aside>
-
-
 </template>
 
 <script>
 export default {
   name: 'LeftSide',
+  data(){
+    return {
 
+      menuList:[]
+    }
+  },
+  methods:{
+    getMenu(){
+      this.$http.get("/menu").then((resp) => {
+        if (resp.data.code == 200) {
+          this.menuList = resp.data.data
+        }
+      })
+    }
+    },
+  mounted() {
+    this.getMenu();
+  }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

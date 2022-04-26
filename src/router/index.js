@@ -1,10 +1,8 @@
 import MyLogin from "@/view/MyLogin";
 import VueRouter from "vue-router";
 import MyMain from "@/view/MyMain";
-import UserMessage from "@/view/user/UserMessage";
-import AccountMessage from "@/view/user/AccountMessage";
-import AllAccount from "@/view/user/AllAccount";
-import UserManagement from "@/view/user/UserManagement";
+import UserList from "@/view/user/UserList";
+import RoleList from "@/view/role/RoleList";
 import Vue from "vue";
 Vue.use(VueRouter)
 var router =new VueRouter({
@@ -25,23 +23,18 @@ var router =new VueRouter({
             component:MyMain,
             children:[
                 {
-                    name:"UserMessage",
+                    name:"UserList",
                     path:"/main/",
-                    component:UserMessage
+                    component:UserList
                 },
                 {
-                    name:"account",
-                    path:"/main/account",
-                    component:AccountMessage
-                },
-                {
-                    name:"AllUser",
-                    path:"/main/Alluser",
-                    component:AllAccount
+                    name:"UserList",
+                    path:"/main/alluser",
+                    component:UserList
                 },{
-                    name:"UserManagement",
-                    path:"/main/UserManagement",
-                    component:UserManagement
+                    name:"RoleList",
+                    path:"/main/role",
+                    component:RoleList
                 }
             ]
         },

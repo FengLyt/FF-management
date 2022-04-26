@@ -42,7 +42,6 @@ export default {
     login(){
       var ThisA=this;
         this.$http.post("/login",this.form).then(function (resp){
-          console.log(resp);
           if (resp.data.code==200){
             //登陆成功
             window.sessionStorage.setItem("token",resp.data.data.token)
